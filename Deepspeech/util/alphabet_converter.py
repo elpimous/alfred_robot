@@ -3,7 +3,7 @@ import os
 
 ########################################################################################
 #
-#   A simple routine who use an alphabet textfile to assign a value to each character,
+#   A simple routine who use an alphabet string to assign a value to each character,
 #   and assign the n_character value.
 #
 #
@@ -17,7 +17,7 @@ cwd = os.getcwd()
 try :
     with open(cwd+'/data/alphabet/alphabet.txt') as alphabet:
         "read your alphabet file characters"
-        characters = alphabet.readlines()[1]
+        characters = alphabet.readlines()[1] #read lign 2
         "transform to unicode"
         characters = unicode(characters, 'utf8')
         characters = characters.replace('\n','') # can be usefull, in case of line return on last alphabet letter
@@ -31,9 +31,9 @@ except :
 	\n-----------------------------------------------------------\n\n')
 
 
-"convert each letter to it's placment value in characters list"
+"Convert each letter to corresponding value"
 def read(letter):
-    "replace the letter by an integer (place in the list)"
+    "replace the letter by an integer (ex: a,b,c,d   c=3)"
     if letter in characters:
         letter = characters.index(letter)+1
     else :
@@ -42,9 +42,10 @@ def read(letter):
     return(letter)
 
 
-"return each value to the original letter"
+"Return each value to corresponding letter"
 def write(data):
     data-=1
-    "replace value by the correcponding letter"
     letter = characters[data]
     return(letter)
+
+
