@@ -13,10 +13,10 @@ from util import alphabet_converter as AC
 # Constants
 SPACE_TOKEN = '<space>'
 SPACE_INDEX = 0
+
 "***********  MOD for personal alphabet use !!!  ************"
 #FIRST_INDEX = ord('a') - 1  # 0 is reserved to space
-"***********  MOD for personal alphabet use !!!  ************"
-alphabet_lenght = AC.characters_numbers # recover number of characters on the alphabet.txt file to serve in Deepspeech.py for 'n_character'
+alphabet_lenght = AC.characters_numbers # assign number of characters of the alphabet.txt string to serve in Deepspeech.py for 'n_character'
 
 
 def text_to_char_array(original):
@@ -27,11 +27,6 @@ def text_to_char_array(original):
     # Create list of sentence's words w/spaces replaced by ''
     result = original.replace(" '", "") # TODO: Deal with this properly
     result = result.replace("'", "")    # TODO: Deal with this properly
-    
-    "***********  MOD for personal alphabet use !!!  ************"
-    result = result.replace('ê','è').replace('ô','o').replace('ù','u').replace('û','u').replace('î','i').replace('ç','c')\
-    .replace('à','a').replace('â','a').replace('-',' ')
-    result = unicode(result, 'utf8')
 
     # Tokenize into letters adding in SPACE_TOKEN where required
     result = np.hstack([SPACE_TOKEN if xt == ' ' else xt for xt in result])
@@ -73,7 +68,7 @@ def sparse_tensor_value_to_texts(value):
     """
     return sparse_tuple_to_texts((value.indices, value.values, value.dense_shape))
 
-def sparse_tuple_to_texts(tuple): # GOOD !
+def sparse_tuple_to_texts(tuple):
     indices = tuple[0]
     values = tuple[1]
     results = [''] * tuple[2][0]

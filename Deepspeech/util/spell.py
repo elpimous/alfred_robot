@@ -17,6 +17,8 @@ def get_model():
 
 def words(text):
     "List of words in text."
+    "***********  MOD for personal alphabet use !!!  ************"
+    #return re.findall(r'\w+', text.lower())
     return re.findall('[^ ]+[.]*', text.lower())
 
 # Load known word set
