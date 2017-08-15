@@ -4,6 +4,9 @@ import kenlm
 from heapq import heapify
 from six.moves import range
 
+# Mod v1.1 #
+
+
 # Define beam with for alt sentence search
 BEAM_WIDTH = 1024
 MODEL = None
