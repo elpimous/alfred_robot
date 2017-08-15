@@ -2,8 +2,8 @@ MODS FOR DEEPSPEECH MOZILLA FOR MULTILANGUAGE (I hope. LOL)
 Tested with French, (use of special characters :âàéèêîôùûç)
 ===========================================================
 	https://github.com/mozilla/DeepSpeech
-v1.0
-====
+Mod v1.1
+========
 
 for python 2.7
 ==============
