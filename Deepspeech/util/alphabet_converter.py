@@ -9,8 +9,10 @@ import os
 #
 #   for use in DEEPSPEECH project
 #
-#                                                Vincent FOUCAULT elpimous12@orange.fr
+#                                               Vincent FOUCAULT elpimous12@orange.fr
 ########################################################################################
+
+# Mod v1.1 #
 
 cwd = os.getcwd()
 

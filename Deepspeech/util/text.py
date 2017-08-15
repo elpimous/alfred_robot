@@ -7,6 +7,8 @@ import re
 from six.moves import range
 from functools import reduce
 
+# Mod v1.1 #
+
 "***********  MOD for personal alphabet use !!!  ************"
 from util import alphabet_converter as AC
 
