@@ -24,7 +24,10 @@ from util.feeding import DataSet, ModelFeeder
 from util.gpu import get_available_gpus
 from util.shared_lib import check_cupti
 from util.spell import correction
+
+"***********  MOD for personal alphabet use !!!  ************"
 import util.text as pytext
+
 from util.text import sparse_tensor_value_to_texts, wer
 from xdg import BaseDirectory as xdg
 import numpy as np
@@ -843,12 +846,12 @@ class Sample(object):
 	"***********  MOD for personal alphabet use !!!  ************"
         self.src = src.encode('utf8')
         self.res = res.encode('utf8')
+	
         self.loss = loss
         self.mean_edit_distance = mean_edit_distance
         self.wer = sample_wer
 
     def __str__(self):
-	print('good')
         return 'WER: %f, loss: %f, mean edit distance: %f\n - src: "%s"\n - result: "%s"' % (self.wer, self.loss, self.mean_edit_distance, self.src, self.res)
 
 class WorkerJob(object):
@@ -1026,7 +1029,6 @@ class Epoch(object):
             return '%s - loss: %f' % (self.name(), self.loss)
 
         s = '%s - WER: %f, loss: %s, mean distance: %f' % (self.name(), self.wer, self.loss, self.mean_edit_distance)
-	print('good2')
         if len(self.samples) > 0:
             line = '\n' + ('-' * 80)
             for sample in self.samples:
