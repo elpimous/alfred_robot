@@ -19,18 +19,18 @@ SPACE_INDEX = 0
 alphabet_lenght = AC.characters_numbers # assign number of characters of the alphabet.txt string to serve in Deepspeech.py for 'n_character'
 
 
-def text_to_char_array(original):
+def text_to_char_array(original): # specials ok !
     r"""
     Given a Python string ``original``, remove unsupported characters, map characters
     to integers and return a numpy array representing the processed string.
     """
+    original=unicode(original, 'utf8')
     # Create list of sentence's words w/spaces replaced by ''
     result = original.replace(" '", "") # TODO: Deal with this properly
     result = result.replace("'", "")    # TODO: Deal with this properly
 
     # Tokenize into letters adding in SPACE_TOKEN where required
     result = np.hstack([SPACE_TOKEN if xt == ' ' else xt for xt in result])
-
     # Map characters into indicies
     "***********  MOD for personal alphabet use !!!  ************"
     #result = np.asarray([SPACE_INDEX if xt == SPACE_TOKEN else ord(xt) - FIRST_INDEX for xt in result])
