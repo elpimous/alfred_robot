@@ -1,32 +1,31 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# HTTP + URL packages
+#parts for sending command
 import httplib2
-from urllib.parse import urlencode, quote # For URL creation
+from urllib.parse import urlencode, quote
 
+#for sending order on system
 import os
 
-
-# Mary server informations
 mary_host = "localhost"
 mary_port = "59125"
 
-# Input text
-input_text = "de impensable peintre de peinture"
+#sentence to speek
+input_text = "tout ceci n'est qu'un test !"
 
-# Build the query
+#build query
 query_hash = {"INPUT_TEXT":input_text,
               "INPUT_TYPE":"TEXT", # Input text
               "LOCALE":"fr",
-              "VOICE":"pierre-voice-hsmm", # Voice informations  (need to be compatible)
+              "VOICE":"pierre-voice-hsmm", # Voice informations (be sure that voices are compatible : 5.1 != 5.2)
               "OUTPUT_TYPE":"AUDIO",
-              "AUDIO":"WAVE", # Audio informations (need both)
+              "AUDIO":"WAVE",
               }
-query = urlencode(query_hash)
-print("query = \"http://%s:%s/process?%s\"" % (mary_host, mary_port, query))
 
-# Run the query to mary http server
+query = urlencode(query_hash)
+
+#launch query to marytts server
 h_mary = httplib2.Http()
 resp, content = h_mary.request("http://%s:%s/process?" % (mary_host, mary_port), "POST", query)
 
@@ -34,12 +33,12 @@ resp, content = h_mary.request("http://%s:%s/process?" % (mary_host, mary_port),
 if (resp["content-type"] == "audio/x-wav"):
 
     # Write the wav file
-    f = open("/tmp/output_wav.wav", "wb")
+    f = open("/tmp/marytts_sentence.wav", "wb")
     f.write(content)
     f.close()
 
     # Play the wav file
-    os.system('aplay /tmp/output_wav.wav')
+    os.system('aplay /tmp/marytts_sentence.wav')
 
 else:
     raise Exception(content)
